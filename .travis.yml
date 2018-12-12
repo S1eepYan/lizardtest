@@ -9,7 +9,8 @@ install:
     - sudo apt-get install g++-aarch64-linux-gnu
     - aarch64-linux-gnu-gcc -v
     - aarch64-linux-gnu-g++ -v
-    - python3 -m pip install lizard
+    - pip --version
+    - pip install lizard
 
 script: 
     - make clean	
