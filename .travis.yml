@@ -16,5 +16,6 @@ script:
     - make
     - ./ascend
     - lizard
-    - lizard --xml >result.xml
+    - mkdir res
+    - lizard --xml > res/result.xml
     - python abc.py
