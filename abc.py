@@ -10,9 +10,23 @@ dom = xml.dom.minidom.parse('result.xml')
 root = dom.documentElement
 m=root.getElementsByTagName('measure')
 
-item=m[1].getElementsByTagName('item')
+for mm in m:
+	if(mm.getAttribute("type")=="File"):
+		mf=mm
+label=mf.getElementsByTagName('label')
+size=label.length
+ind=0
+for lab in label:
+	if(lab.firstChild.data=='CCN'):
+		# print(ind)
+		break
+	ind=ind+1
+
+item=mf.getElementsByTagName('item')
 print(item)
 for it in item:
 	print(it.getAttribute("name"))
 	tmp=it.getElementsByTagName('value')
-	print(tmp[2].firstChild.data)
+	print(tmp[ind].firstChild.data)
+
+
