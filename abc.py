@@ -1,19 +1,17 @@
 #coding=utf-8
 import  xml.dom.minidom
 
-#sourcemonitor_path = top_dir 
-#cmd=export sourcemonitor_path=" + sourcemonitor_path + ";wine " + sourcemonitor_path + " /C commands.xml"
-#打开xml文档
-dom = xml.dom.minidom.parse('res/result.xml')
+dom = xml.dom.minidom.parse('result.xml')
 
 #得到文档元素对象
 root = dom.documentElement
 m=root.getElementsByTagName('measure')
-
 for mm in m:
-	if(mm.getAttribute("type")=="File"):
-		mf=mm
-label=mf.getElementsByTagName('label')
+	if(mm.getAttribute("type")=="Function"):
+		mfun=mm
+
+
+label=mfun.getElementsByTagName('label')
 size=label.length
 ind=0
 for lab in label:
@@ -22,11 +20,8 @@ for lab in label:
 		break
 	ind=ind+1
 
-item=mf.getElementsByTagName('item')
-print(item)
+item=mfun.getElementsByTagName('item')
 for it in item:
 	print(it.getAttribute("name"))
 	tmp=it.getElementsByTagName('value')
 	print(tmp[ind].firstChild.data)
-
-
